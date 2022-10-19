@@ -1,5 +1,29 @@
+import { Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import { Model, Loading } from './Components';
+
 const App: React.FC = () => {
-  return <h1 className="text-4xl">Morteza's 3D Model</h1>;
+  return (
+    <div>
+      <Canvas
+        camera={{ position: [2, 0, 12.25], fov: 13 }}
+        style={{
+          backgroundColor: '#111a21',
+          width: '100vw',
+          height: '100vh',
+        }}
+      >
+        <ambientLight intensity={1.25} />
+        <ambientLight intensity={0.1} />
+        <directionalLight intensity={0.4} />
+        <Suspense fallback={<Loading />}>
+          <Model position={[0.025, -0.9, 0]} />
+        </Suspense>
+        <OrbitControls enableZoom={false} />
+      </Canvas>
+    </div>
+  );
 };
 
 export default App;
