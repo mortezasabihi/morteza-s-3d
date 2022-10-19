@@ -33,7 +33,7 @@ const MODEL_URL =
   'https://api.readyplayer.me/v1/avatars/634fcf817c0746d6b32743c0.glb';
 
 const Model: React.FC<JSX.IntrinsicElements['group']> = (props) => {
-  const { nodes, materials } = useGLTF(MODEL_URL) as GLTFResult;
+  const { nodes, materials } = useGLTF(MODEL_URL) as unknown as GLTFResult;
 
   return (
     <group {...props} dispose={null}>
